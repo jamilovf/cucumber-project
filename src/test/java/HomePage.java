@@ -13,6 +13,8 @@ public class HomePage {
 
     private static final By LOGIN_ERROR = By.xpath("//*[@id=\"center_column\"]/div[1]/ol/li");
     private static final By CONTACT_ERROR = By.cssSelector("#center_column > div > ol > li");
+    private static final By CART_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/p[1]");
+    private static final By SEARCH_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/p[1]");
 
     @FindBy(className = "login")
     private WebElement signInLink;
@@ -25,6 +27,12 @@ public class HomePage {
 
     @FindBy(id = "submitMessage")
     private WebElement sendButton;
+
+    @FindBy(xpath = "//header/div[3]/div[1]/div[1]/div[3]/div[1]/a[1]")
+    private WebElement cartLink;
+
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[2]/form[1]/button[1]")
+    private WebElement searchButton;
 
     private WebDriver driver;
 
@@ -53,6 +61,14 @@ public class HomePage {
         return getErrorMessage(CONTACT_ERROR);
     }
 
+    public Optional<String> getCartError() {
+        return getErrorMessage(CART_ERROR);
+    }
+
+    public Optional<String> getSearchError() {
+        return getErrorMessage(SEARCH_ERROR);
+    }
+
     public void fillField(String field, String value) {
         getField(By.id(field)).sendKeys(value);
     }
@@ -75,6 +91,14 @@ public class HomePage {
 
     public WebElement getSendButton() {
         return sendButton;
+    }
+
+    public WebElement getCartLink() {
+        return cartLink;
+    }
+
+    public WebElement getSearchButton(){
+        return searchButton;
     }
 
     private Optional<String> getErrorMessage(By errorLocator) {
