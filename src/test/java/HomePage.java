@@ -16,6 +16,7 @@ public class HomePage {
     private static final By CART_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/p[1]");
     private static final By SEARCH_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/p[1]");
     private static final By SEARCH_RESULT = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/h1[1]/span[2]");
+    private static final By CREATE_AN_ACCOUNT_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/ol[1]/li[1]");
 
     @FindBy(className = "login")
     private WebElement signInLink;
@@ -34,6 +35,9 @@ public class HomePage {
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[2]/form[1]/button[1]")
     private WebElement searchButton;
+
+    @FindBy(id = "SubmitCreate")
+    private WebElement createAnAccountButton;
 
     private WebDriver driver;
 
@@ -73,7 +77,11 @@ public class HomePage {
     public Optional<String> getSearchResult() {
         return getErrorMessage(SEARCH_RESULT);
     }
-
+    
+    public Optional<String> getCreateAnAccountError() {
+        return getErrorMessage(CREATE_AN_ACCOUNT_ERROR);
+    }
+    
     public void fillField(String field, String value) {
         getField(By.id(field)).sendKeys(value);
     }
@@ -106,6 +114,10 @@ public class HomePage {
         return searchButton;
     }
 
+    public WebElement getCreateAnAccountButton() {
+        return createAnAccountButton;
+    }
+
     private Optional<String> getErrorMessage(By errorLocator) {
         Optional<WebElement> error = getError(errorLocator);
         if (error.isPresent()) {
@@ -116,7 +128,7 @@ public class HomePage {
         }
     }
 
-    private Optional<WebElement> getError(By errorLocator) {
+    private Optional<WebElement> getError(By    errorLocator) {
         List<WebElement> elements = driver.findElements(errorLocator);
         if (elements.size() > 0) {
             return Optional.of(elements.get(0));
@@ -124,4 +136,6 @@ public class HomePage {
             return Optional.empty();
         }
     }
+
+
 }
