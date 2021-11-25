@@ -15,6 +15,7 @@ public class HomePage {
     private static final By CONTACT_ERROR = By.cssSelector("#center_column > div > ol > li");
     private static final By CART_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/p[1]");
     private static final By SEARCH_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/p[1]");
+    private static final By SEARCH_RESULT = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/h1[1]/span[2]");
 
     @FindBy(className = "login")
     private WebElement signInLink;
@@ -67,6 +68,10 @@ public class HomePage {
 
     public Optional<String> getSearchError() {
         return getErrorMessage(SEARCH_ERROR);
+    }
+
+    public Optional<String> getSearchResult() {
+        return getErrorMessage(SEARCH_RESULT);
     }
 
     public void fillField(String field, String value) {
