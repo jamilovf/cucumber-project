@@ -15,33 +15,34 @@ public class ContactUsStepDefs extends AbstractStepDefs {
         homePage.getContactUsLink().click();
     }
 
+    @Given("the first field {string} is filled with {string}")
+    public void theFirstFieldFieldIsFilledWithParameter(String field, String parameter) {
+        homePage.fillField(field, parameter);
+    }
+
+    @And("the second field {string} is filled with {string}")
+    public void theSecondFieldFieldIsFilledWithParameter(String field, String parameter) {
+        homePage.fillField(field, parameter);
+    }
+
+    @And("the third field {string} is filled with {string}")
+    public void theThirdFieldFieldIsFilledWithParameter(String field, String parameter) {
+        homePage.fillField(field, parameter);
+    }
+
     @When("the Send button is clicked")
     public void theSendButtonIsClicked() {
         homePage.getSendButton().click();
     }
 
-    @Then("a {string} error message is shown")
-    public void aErrorMessageIsShown(String arg0) {
+    @Then("a {string} contact us error message is shown")
+    public void aMsgContactUsErrorMessageIsShown(String msg) {
         Optional<String> errorMessage = homePage.getContactError();
         if (errorMessage.isPresent()) {
-            Assert.assertEquals(arg0, errorMessage.get());
+            Assert.assertEquals(msg, errorMessage.get());
         } else {
             fail();
         }
     }
 
-    @Given("the email address is filled with {string}")
-    public void theEmailAddressIsFilledWith(String arg0) {
-        homePage.fillField("email", arg0);
-    }
-
-    @And("the order reference is filled with {string}")
-    public void theOrderReferenceIsFilledWith(String arg0) {
-        homePage.fillField("id_order", arg0);
-    }
-
-    @And("the message is filled with {string}")
-    public void theMessageIsFilledWith(String arg0) {
-        homePage.fillField("message", arg0);
-    }
 }

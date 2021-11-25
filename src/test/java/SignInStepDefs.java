@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.*;
 
-public class LoginStepDefs extends AbstractStepDefs {
+public class SignInStepDefs extends AbstractStepDefs {
 
     @And("the Sign In link is clicked")
     public void theSignInLinkIsClicked() {
