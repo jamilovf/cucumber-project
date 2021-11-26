@@ -19,6 +19,7 @@ public class HomePage {
     private static final By CREATE_AN_ACCOUNT_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/div[1]/form[1]/div[1]/div[1]/ol[1]/li[1]");
     private static final By REGISTRATION_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/p[1]");
     private static final By NEW_PRODUCTS_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/p[1]");
+    private static final By NEWSLETTER_ERROR = By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/p[1]");
 
     @FindBy(className = "login")
     private WebElement signInLink;
@@ -46,6 +47,9 @@ public class HomePage {
 
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[3]/footer[1]/div[1]/section[3]/ul[1]/li[2]/a[1]")
     private WebElement newProductsLink;
+
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[3]/footer[1]/div[1]/div[1]/div[1]/form[1]/div[1]/button[1]")
+    private WebElement newsletterButton;
 
     private WebDriver driver;
 
@@ -88,6 +92,10 @@ public class HomePage {
 
     public Optional<String> getNewProductsError() {
         return getErrorMessage(NEW_PRODUCTS_ERROR);
+    }
+
+    public Optional<String> getNewsletterError() {
+        return getErrorMessage(NEWSLETTER_ERROR);
     }
 
     
@@ -133,6 +141,10 @@ public class HomePage {
 
     public WebElement getNewProductsLink() {
         return newProductsLink;
+    }
+
+    public WebElement getNewsletterButton() {
+        return newsletterButton;
     }
 
     private Optional<String> getErrorMessage(By errorLocator) {
