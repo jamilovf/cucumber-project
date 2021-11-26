@@ -13,12 +13,12 @@ public class SignInStepDefs extends AbstractStepDefs {
 
     @And("the Sign In link is clicked")
     public void theSignInLinkIsClicked() {
-        homePage.clickSignInLink();
+        homePage.getSignInLink().click();
     }
 
     @When("the Sign In button is clicked")
     public void theSignInButtonIsClicked() {
-        homePage.clickSignInButton();
+        homePage.getSignInButton().click();
     }
 
     @Given("the {string} is filled with {string}")

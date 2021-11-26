@@ -5,9 +5,9 @@ Feature: Testing the ContactUs page
     And the Contact Us link is clicked
 
   Scenario Outline:
-    Given the first field '<field>' is filled with '<parameter>'
-    And the second field '<field2>' is filled with '<parameter2>'
-    And the third field '<field3>' is filled with '<parameter3>'
+    Given the contact us '<field>' is filled with '<parameter>'
+    Given the contact us '<field2>' is filled with '<parameter2>'
+    Given the contact us '<field3>' is filled with '<parameter3>'
     When the Send button is clicked
     Then a '<msg>' contact us error message is shown
     Examples:

@@ -15,18 +15,8 @@ public class ContactUsStepDefs extends AbstractStepDefs {
         homePage.getContactUsLink().click();
     }
 
-    @Given("the first field {string} is filled with {string}")
+    @Given("the contact us {string} is filled with {string}")
     public void theFirstFieldFieldIsFilledWithParameter(String field, String parameter) {
-        homePage.fillField(field, parameter);
-    }
-
-    @And("the second field {string} is filled with {string}")
-    public void theSecondFieldFieldIsFilledWithParameter(String field, String parameter) {
-        homePage.fillField(field, parameter);
-    }
-
-    @And("the third field {string} is filled with {string}")
-    public void theThirdFieldFieldIsFilledWithParameter(String field, String parameter) {
         homePage.fillField(field, parameter);
     }
 
